@@ -89,15 +89,46 @@
 - In the architectural diagram, the prompts folder with pre-seeded detailed prompts are going to be valuable.
 - Adding an MCP Server and using Claude / Chat-GPT will mean instead of having a detailed prompt direclty inside the Flux-2 node, Claude can help prompt inject / prompt surgery and help the user use natural language. For example, currently, we have to provide all the details inside the Flux 2 prompt like what is Eid, Frontier LLMs like Claude would help inject a ton of extra detail around those simple words. Or we could do that ourselves inside a script or manually have a larger prompt that we can copy into the Flux 2 node with details.
 
-### Timeline Summary
-Day |   Phase      | Tasks
-1     Environment   WSL2, CUDA, Python, Miniconda
-1-2   ComfyUI       Install, download models, custom nodes
-2     Workflows     Create and test 3 workflow templates
-2-3   Documentation Friend guides, prompt examples
-3-4   MCP Server    Core modules, prompt engineering, server
-4     Networking    Firewall, port forwarding, (Tailscale)
-5     Testing       End-to-end tests, friend access tests
+## Timeline Summary
+
+| Day | Phase | Tasks |
+|-----|-------|-------|
+| 1 | Environment | WSL2, CUDA, Python, Miniconda |
+| 1-2 | ComfyUI | Install, download models, custom nodes |
+| 2 | Workflows | Create and test 3 workflow templates |
+| 2-3 | Documentation | Friend guides, prompt examples |
+| 3-4 | MCP Server | Core modules, prompt engineering, server |
+| 4 | Networking | Firewall, port forwarding, (Tailscale) |
+| 5 | Testing | End-to-end tests, friend access tests |
+
+**Total estimated time: 5 days of focused work**
+
+## Success Logs
+
+```
+[ComfyUI-Manager] All startup tasks have been completed.
+got prompt
+Using xformers attention in VAE
+Using xformers attention in VAE
+VAE load device: cuda:0, offload device: cpu, dtype: torch.bfloat16
+Found quantization metadata version 1
+Using MixedPrecisionOps for text encoder
+CLIP/text encoder model load device: cuda:0, offload device: cpu, current: cpu, dtype: torch.float16
+Requested to load Flux2TEModel_
+loaded completely; 21815.80 MB usable, 17180.60 MB loaded, full load: True
+Found quantization metadata version 1
+Detected mixed precision quantization
+Using mixed precision operations
+model weight dtype torch.bfloat16, manual cast: torch.bfloat16
+model_type FLUX
+Requested to load Flux2
+loaded partially; 20159.57 MB usable, 19296.00 MB loaded, 14517.00 MB offloaded, 1296.00 MB buffer reserved, lowvram patches: 0
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 20/20 [01:17<00:00,  3.88s/it]
+Requested to load AutoencoderKL
+Unloaded partially: 1368.00 MB freed, 17928.00 MB remains loaded, 1296.00 MB buffer reserved, lowvram patches: 0
+loaded completely; 269.87 MB usable, 160.31 MB loaded, full load: True
+Prompt executed in 139.18 seconds
+```
 
 TODO:
 - TailScale for friend access
