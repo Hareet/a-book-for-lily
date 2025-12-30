@@ -69,6 +69,7 @@
     └──────────┘        └──────────┘        └──────────┘
 ```
 ![coloring-book-pretest](outputs/cb-localhost-workflow.png)
+![coloring-book-workflow-nodes](outputs/coloring_book_workflow_nodes.png)
 ---
 
 ## Setup Dependencies
