@@ -1,16 +1,17 @@
 # a-book-for-lily
 
 
-### Architectural Diagram
+## Architecture Diagram
 
+```
 ┌────────────────────────────────────────────────────────────────────────────┐
 │                            YOUR LAPTOP (RTX 5090)                          │
 │                                                                            │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                         WSL2 Ubuntu 22.04                           │   │
-│  │                                                                     │   │
-│  │  ┌────────────────────────────────────────────────────────────────┐ │   │
-│  │  │                    flux-coloring-book/                          │ │  │
+│  ┌─────────────────────────────────────────────────────────────────────┐  │
+│  │                         WSL2 Ubuntu 22.04                            │  │
+│  │                                                                      │  │
+│  │  ┌────────────────────────────────────────────────────────────────┐ │  │
+│  │  │                    coloring-book/a-book-for-lily/                          │ │  │
 │  │  │                                                                 │ │  │
 │  │  │  src/                                                           │ │  │
 │  │  │  ├── core/           # Shared FLUX pipeline                     │ │  │
@@ -66,6 +67,29 @@
     │ Browser  │        │ Claude   │        │  Either  │
     │ ComfyUI  │        │ Desktop  │        │   Path   │
     └──────────┘        └──────────┘        └──────────┘
+```
+
+---
+
+## Setup Dependencies
+ - Image Generation Model: Flux 2.Dev (FP8, and F16)
+ - CUDA 12.8
+ - RTX 5090 24GB VRAM
+
+## Potential Options and Use Cases:
+- SaaS Offering: Replicate (pay .3 per image, or they publish all free images)
+    - For one coloring book for one end user, it's probably better to use this SaaS.
+    - If we wanted to abstract and create a ton of images for custom books. Imagine we take a simple image of the family the user gives us, and add that our workflow to generate a new book with their images. 
+    - We get better free testing to hone our prompts and seed context until we are ready to pay
+    - We get to keep all our data / prompts. We can freely use ourselves without "giving our image data away". 
+- The key is to learn that we can build out our own workflows using offline, local models. It doesn't have to be image generation.
+- The abstract approach above is a cool idea. We should be able to take requests from people, and generate the same type of coloring book with their uploaded features or requests. 
+
+## Value Additions
+- In the architectural diagram, the prompts folder with pre-seeded detailed prompts are going to be valuable.
+- Adding an MCP Server and using Claude / Chat-GPT will mean instead of having a detailed prompt direclty inside the Flux-2 node, Claude can help prompt inject / prompt surgery and help the user use natural language. For example, currently, we have to provide all the details inside the Flux 2 prompt like what is Eid, Frontier LLMs like Claude would help inject a ton of extra detail around those simple words. Or we could do that ourselves inside a script or manually have a larger prompt that we can copy into the Flux 2 node with details.
+
+![coloring-book-pretest](outputs/cb-localhost-workflow.png)
 
 ### Timeline Summary
 Day |   Phase      | Tasks
@@ -76,3 +100,8 @@ Day |   Phase      | Tasks
 3-4   MCP Server    Core modules, prompt engineering, server
 4     Networking    Firewall, port forwarding, (Tailscale)
 5     Testing       End-to-end tests, friend access tests
+
+TODO:
+- TailScale for friend access
+- Documentation
+- MCP Server
