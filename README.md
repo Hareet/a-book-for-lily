@@ -68,7 +68,7 @@
     │ ComfyUI  │        │ Desktop  │        │   Path   │
     └──────────┘        └──────────┘        └──────────┘
 ```
-
+![coloring-book-pretest](outputs/cb-localhost-workflow.png)
 ---
 
 ## Setup Dependencies
@@ -88,8 +88,6 @@
 ## Value Additions
 - In the architectural diagram, the prompts folder with pre-seeded detailed prompts are going to be valuable.
 - Adding an MCP Server and using Claude / Chat-GPT will mean instead of having a detailed prompt direclty inside the Flux-2 node, Claude can help prompt inject / prompt surgery and help the user use natural language. For example, currently, we have to provide all the details inside the Flux 2 prompt like what is Eid, Frontier LLMs like Claude would help inject a ton of extra detail around those simple words. Or we could do that ourselves inside a script or manually have a larger prompt that we can copy into the Flux 2 node with details.
-
-![coloring-book-pretest](outputs/cb-localhost-workflow.png)
 
 ### Timeline Summary
 Day |   Phase      | Tasks
